@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script
+	  src="https://code.jquery.com/jquery-3.1.1.min.js"
+	  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+	  crossorigin="anonymous"></script>
+	<title>Testando Yoda Speaker</title>
+	<script>
+		$(document).ready(function () {
+
+			    $("#btnTrigger").on('click',function () {
+
+			        $.ajax({
+			            url: 'https://yoda.p.mashape.com/yoda', // The URL to the API. You can get this by clicking on "Show CURL example" from an API profile
+			            type: 'GET', // The HTTP Method
+			            data: {sentence: $("#boxArea").val()}, // Parameters go here
+			            datatype: 'json',
+			            success: function (data) {
+			                alert(data);
+			            },
+			            error: function (err) {
+			                alert(err);
+			            },
+			            beforeSend: function (xhr) {
+			                xhr.setRequestHeader("X-Mashape-Authorization", "a7zMvvSpksmshOLPs9hCkxW93k6np1XnNlCjsnDg0PAlgJE9kY"); // Enter your Mashape key here
+			            }
+			        });
+			    });
+			});
+	
+	</script>
+</head>
+<body>
+    <p>Sua frase aqui, você deve escrever jovem Padawan! (Em inglês)</p>
+    <p><textarea  id="boxArea" cols="40" rows="4"></textarea></p>
+    <p><input type="button" id="btnTrigger" value="Traduzindo para o modo Yoda!!!" /></p>
+    <<img src="http://rs358.pbsrc.com/albums/oo24/starwarzrocks/thyoda_star_wars-1.gif~c200">
+</body>
+</html>
